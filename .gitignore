@@ -1,0 +1,6 @@
+crendentials.tf
+**/.terraform/*
+*terraform*
+# .tfstate files
+*.tfstate
+*.tfstate.*

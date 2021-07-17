@@ -1,2 +1,2 @@
 - include_tasks: 01-añadiendo_reglas_firewall.yaml
-#- include_tasks: 02-configurando-kubeadm.yaml 
+- include_tasks: 02-configurando-kubeadm.yaml 

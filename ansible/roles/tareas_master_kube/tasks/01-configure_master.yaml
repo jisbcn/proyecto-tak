@@ -1,6 +1,6 @@
-#- name: añadir pod-network
-#  command: "kubeadm init --pod-network-cidr 192.169.0.0/16"
-#  become: yes
+- name: añadir pod-network
+  command: "kubeadm init --pod-network-cidr 192.169.0.0/16"
+  become: yes
 
 - name: creamos el directorio .kube
   become: yes

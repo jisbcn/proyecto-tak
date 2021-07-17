@@ -1,0 +1,9 @@
+---
+
+- name: instalando servicios nfs creando directorios
+  hosts: nfs.azure
+  vars_files:
+    - "group_vars/nfs_vars.yaml"
+  gather_facts: true 
+  roles:
+    - nfs_server

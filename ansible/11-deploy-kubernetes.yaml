@@ -1,0 +1,9 @@
+---
+
+- name: desplegamos una app en kubernetes
+  hosts: master.azure
+  gather_facts: yes 
+  vars_files:
+    - "group_vars/kube.yaml"
+  roles:
+    - deploy_kubernetes

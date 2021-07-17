@@ -1,0 +1,35 @@
+- name: Creamos el directorio
+  file:
+    path: /srv/nfs
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  become: yes
+
+- name: Creamos el directorio
+  file:
+    path: /srv/nfs2
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+  become: yes
+
+
+
+- name: instalando package de nfs
+  dnf:
+    name: "{{ rpms_nfs }}"
+    state: latest
+    update_cache: True
+  become: yes
+
+- name: Arrancando nfs server
+  systemd:
+    name: nfs-server
+    state: started
+    daemon_reload: yes
+    enabled: yes
+  become: yes
+

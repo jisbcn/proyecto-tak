@@ -1,0 +1,7 @@
+---
+
+- name: configuracion firewalld con red de docker
+  hosts: all
+  gather_facts: true
+  roles:
+    - añadir_docker_network

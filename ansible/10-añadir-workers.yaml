@@ -1,0 +1,6 @@
+- name: añadir workers
+  hosts: all
+  gather_facts: false
+  roles:
+    - añadir_workers
+

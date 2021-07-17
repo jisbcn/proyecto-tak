@@ -1,0 +1,4 @@
+- include_tasks:  01-firewalld-master-workers.yaml
+- include_tasks:  02-sysctl-master-workers.yaml
+- include_tasks:  03-instalando_docker.yaml
+- include_tasks:  04-instalando_kubernetes.yaml

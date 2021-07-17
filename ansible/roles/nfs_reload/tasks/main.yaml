@@ -1,0 +1,2 @@
+- include_tasks: 01-reload_nfs.yaml
+- include_tasks: 02-firewalld_nfs.yaml 

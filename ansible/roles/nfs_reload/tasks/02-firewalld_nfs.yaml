@@ -1,0 +1,25 @@
+
+- name: añadir reglas firewalld
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - nfs
+    - rpc-bind
+    - mountd
+  become: yes 
+   
+
+- name: reload servicio firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes
+
+- name: validamos que esta arrancado
+  systemd:
+    name: firewalld
+    state: started
+  become: yes
+

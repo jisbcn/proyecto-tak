@@ -1,0 +1,14 @@
+- name: creamos el token en el master
+ become: yes
+ shell: kubeadm token create --print-join-command
+ register: unir_workers
+  delegate_to: master.azure 
+
+- name: establecer comando join
+  set_fact:
+  join_command: "{{ unir_workers.stdout_lines[0] }}"
+  delegate_to: workers 
+ 
+- name: unimos los workers	
+  shell: "{{ hostvars['master'].join_command }}"
+  delegate_to: workers 

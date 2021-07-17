@@ -1,0 +1,17 @@
+- name: validamos que esta arrancado firewalld
+  systemd:
+    name: firewalld
+    state: started
+  become: yes
+
+- name: Ejecutamos masquerade en firewalld 
+  firewalld:
+    masquerade: yes
+    state: enabled
+  become: yes
+ 
+- name: reload config firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+  become: yes

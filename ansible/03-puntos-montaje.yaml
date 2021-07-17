@@ -1,0 +1,9 @@
+---
+
+- name: creando fichero de exports
+  hosts: nfs
+  vars_files:
+    - "group_vars/nfs_vars.yaml"
+  gather_facts: true 
+  roles:
+    - nfs_exports

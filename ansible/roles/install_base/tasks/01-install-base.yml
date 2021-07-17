@@ -1,0 +1,26 @@
+---
+
+- name: instalar packages
+
+  dnf:
+    name: "{{ rpms }}"
+    state: latest
+    update_cache: True
+  become: yes
+
+- name: Arrancar Chrony.
+  systemd: 
+    name: chronyd
+    state: started
+    daemon_reload: yes
+    enabled: yes
+  become: yes 
+
+- name: Arrancar ntp
+  command: /usr/bin/timedatectl set-ntp true
+  become: yes
+
+- name: Desactivamos SELinux
+  selinux:
+    state: disabled
+  become: yes

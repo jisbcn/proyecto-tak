@@ -1,0 +1,17 @@
+- name: Creando fichero de exports de todos los servidores del grupo nfs_share
+  lineinfile:
+    dest: "/etc/exports"
+    create: yes
+    line: /srv/nfs  "{{ item }}" (rw,insecure,sync,no_subtree_check,no_root_squash)
+  become: true
+  with_items:
+   - "{{ workers_ip }}"
+
+
+- name: Añadiendo linea de nfs2 
+  lineinfile:
+        dest: "/etc/exports"
+        line: /srv/nfs2  "{{ item }}" (rw,insecure,sync,no_subtree_check,no_root_squash)
+  with_items:
+   - "{{ workers_ip }}"   
+  become: true

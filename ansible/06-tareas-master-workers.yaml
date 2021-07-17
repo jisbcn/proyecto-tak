@@ -1,0 +1,10 @@
+---
+
+- name: configuracion comun master y nodos
+  hosts: nfs_share
+  gather_facts: false
+  vars_files:
+    - "group_vars/repos.yaml"
+    - "group_vars/kube_config.yaml" 
+  roles:
+    - tareas_master_nodos

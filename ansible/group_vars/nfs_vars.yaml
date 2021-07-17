@@ -1,0 +1,6 @@
+
+rpms_nfs: ['nfs-utils', 'net-tools']
+
+services: ['nfs', 'rpc-bind', mountd']
+
+workers_ip: [10.0.1.12]

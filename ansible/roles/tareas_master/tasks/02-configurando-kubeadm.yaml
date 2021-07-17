@@ -1,0 +1,3 @@
+- name: Configurando Kudeadm
+  command: "kubeadm config images pull"
+  become: yes

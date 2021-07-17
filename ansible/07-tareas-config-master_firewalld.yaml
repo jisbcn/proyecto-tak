@@ -1,0 +1,7 @@
+---
+
+- name: configuracion master
+  hosts: master.azure
+  gather_facts: false
+  roles:
+    - tareas_master

@@ -1,0 +1,16 @@
+- name: Creando fichero de exports de todos los servidores del grupo nfs_share
+  lineinfile:
+    dest: "/etc/exports"
+    create: yes
+    line: "/srv/nfs  {{ ansible_default_ipv4.address }}(rw,insecure,sync,no_subtree_check,no_root_squash)"
+  when:  "'nfs_share' in group_names"
+  delegate_to: nfs.azure
+  become: true
+
+- name: Añadiendo linea de nfs2 
+  lineinfile:
+        dest: "/etc/exports"
+        line: "/srv/nfs2  {{ ansible_default_ipv4.address }}(rw,insecure,sync,no_subtree_check,no_root_squash)"
+  when:  "'nfs_share' in group_names"
+  delegate_to: nfs.azure
+  become: true

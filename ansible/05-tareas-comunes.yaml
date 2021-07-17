@@ -1,0 +1,7 @@
+---
+
+- name: instalando servicios nfs creando directorios
+  hosts: all
+  gather_facts: true 
+  roles:
+    - tareas_comunes

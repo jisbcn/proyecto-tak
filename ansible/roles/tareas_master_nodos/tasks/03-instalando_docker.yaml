@@ -1,0 +1,14 @@
+- name: Instalamos repo de docker
+  command: "dnf config-manager --add-repo={{repo_docker}}"
+  become: yes
+
+- name: instalamos docker
+  command: "dnf install docker-ce-20.10.6-3.el8 -y"
+  become: yes
+
+- name: arrancamos docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes

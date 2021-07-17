@@ -1,0 +1,49 @@
+- name: Creamos directorio para los yaml
+  file:
+      path: "{{ path_kube }}"
+      state: directory
+  become: yes
+
+- name: copiando fichero deployment-mysql
+  template:
+    src: mysql-deployment.j2 
+    dest: "{{ path_kube}}04-deployment_mysql.yaml"
+    mode: '0664'
+    owner: root
+    group: root 
+  become: yes
+
+
+- name: copiando fichero secrets
+  template:
+    src: secret.j2
+    dest: "{{ path_kube }}01-secret.yaml"
+    mode: '0664'
+    owner: root
+    group: root
+  become: yes
+
+
+- name: copiando fichero volumes
+  template:
+    src: pvc-mysql-wp.j2
+    dest: "{{ path_kube }}02-pvc-mysql-wp.yaml"
+    mode: '0664'
+    owner: root
+    group: root
+  become: yes
+
+
+- name: copiando fichero deployment wordpress
+  template:
+    src: wordpress-deployment.j2
+    dest: "{{ path_kube }}03-wordpress-deployment.yaml"
+    mode: '0664'
+    owner: root
+    group: root
+  become: yes
+
+
+- name: Desplegamos wordpress en kubernetes
+  shell: "kubectl apply -f {{ path_kube }}" 
+  become: yes

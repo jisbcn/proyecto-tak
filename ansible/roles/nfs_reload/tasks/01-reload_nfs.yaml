@@ -1,0 +1,3 @@
+- name: reload nfs server
+  command: "/usr/sbin/exportfs -r"
+  become: true

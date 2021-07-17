@@ -1,0 +1,22 @@
+#- name: añadir pod-network
+#  command: "kubeadm init --pod-network-cidr 192.169.0.0/16"
+#  become: yes
+
+- name: creamos el directorio .kube
+  become: yes
+  file:
+        path: $HOME/.kube
+        state: directory
+        mode: 0755
+
+- name: copiamos admin.conf al path .kube
+  copy:
+        src: /etc/kubernetes/admin.conf
+        dest: $HOME/.kube/config
+        remote_src: yes
+  become: yes
+
+- name: instalamos la red flannel
+  become: yes
+  shell: "kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml"
+

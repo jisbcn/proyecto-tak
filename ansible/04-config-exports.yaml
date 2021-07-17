@@ -1,0 +1,6 @@
+---
+
+- name: creando fichero de exports y permitiendo acceso
+  hosts: nfs.azure
+  roles:
+    - nfs_reload

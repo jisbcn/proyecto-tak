@@ -1,0 +1,10 @@
+---
+
+- name: instalando servicios base
+  hosts: all
+  vars_files:
+    - "group_vars/soft_base.yaml"
+  gather_facts: false
+  roles:
+    - time
+    - install_base

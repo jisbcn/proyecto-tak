@@ -1,0 +1,3 @@
+
+rpms: ['chrony', 'bind-utils', 'dnf-plugins-core', 'net-tools', 'jq','nfs-utils', 'nfs4-acl-tools', 'wget']
+

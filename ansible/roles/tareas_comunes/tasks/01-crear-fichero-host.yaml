@@ -1,0 +1,5 @@
+- name: Crear fichero hosts en todos los nodos
+  template:
+    src=etc/hosts.j2
+    dest=/etc/hosts
+  become: true
